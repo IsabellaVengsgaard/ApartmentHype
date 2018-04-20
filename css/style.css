@@ -1,0 +1,569 @@
+/* Gobal style - Mobile first */
+
+/* HEADER STYLES 
+--------------------------------------------------------------------*/
+
+/*Nav hamburger - har brugt denne til at lære hvordan man laver en hamburger menu til mobilefirst: https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793*/
+
+/* Css til "Screen reader only" */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*menu knap*/
+
+.menu-toggle {
+    display: inline-block;
+    padding: .75em 15px;
+    line-height: 1em;
+    font-size: 1em;
+    color: #333;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+    color: lavender;
+}
+
+.burger {
+    width: 31px;
+    height: 4px;
+    background-color: black;
+    margin: 5px 0;
+}
+/*offscreen*/
+
+.main-menu {
+    position: absolute;
+    left: -200px;
+    top: 0;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: visible;
+    transition: left 0.3s ease, box-shadow 0.3s ease;
+    z-index: 999;
+}
+
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 2.5em 0 0;
+    /*Skjult*/
+    box-shadow: -8px 0 8px rgba(0, 0, 0, .5);
+    min-height: 100%;
+    width: 200px;
+    background: #1a1a1a;
+}
+
+
+.main-menu a {
+    display: block;
+    padding: .75em 15px;
+    line-height: 1em;
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #383838;
+}
+
+.main-menu li:first-child a {
+    border-top: 1px solid #383838
+}
+
+.main-menu a:hover,
+.main-menu a:focus {
+    background: #333;
+    text-decoration: underline;
+}
+
+.main-menu .menu-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+/*logo*/
+
+.ah_logo {
+    width: 80%;
+}
+
+header {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+
+.main-menu:target,
+.main-menu[aria-expanded="true"] {
+    left: 0;
+    outline: none;
+    box-shadow: 3px 0 12px rgba(0, 0, 0, .25);
+}
+
+.main-menu:target .menu-close,
+.main-menu[aria-expanded="true"] .menu-close {
+    z-index: 1001;
+}
+
+.main-menu:target ul,
+.main-menu[aria-expaned=true] ul {
+    position: relative;
+    z-index: 1000;
+}
+
+.main-menu:target + .backdrop,
+.main-menu[aria-expanded="true"] + .backdrop {
+    position: absolute;
+    display: block;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    background: #000;
+    background: rgba(0, 0, 0, .85);
+    cursor: default;
+}
+
+
+@supports (position: fixed) {
+    .main-menu,
+    .main-menu:target + .backdrop,
+    .main-menu[aria-expanded="true"] + .backdrop {
+        position: fixed;
+    }
+}
+/*Header -----------------------------------------*/
+
+.head {
+    display: flex;
+    align-items: baseline; 
+}
+
+
+/*Ikoner i toppen*/
+.head {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+
+.icons {
+    font-size: 2.3em;
+    order: 1; 
+}
+
+.icons a {
+     color: lightcoral; 
+}
+
+.icons a:hover {
+    color: black;
+}
+
+@media screen and (max-width: 450px) {
+   .icons {
+    display: none;
+  }
+}
+
+/* BODY STYLES 
+--------------------------------------------------------------------*/
+body {
+    margin: 0;
+    font-family: 'Harmattan', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Josefin Slab', serif;
+}
+
+/*forside billede*/
+.mainpic {
+    width: 100%;
+    margin-bottom: 0px;
+}
+.lej{
+   background-color: rgba(163, 234, 136, 0.72);
+    padding: 10px;
+}
+.lille {   
+    font-size: 24px;
+    font-family: 'Josefin Slab', serif;
+    text-align: center;
+    margin: 0;
+}
+
+/*Intro til hjemmesiden*/
+
+.intro {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.intro a {
+    color: black;
+    text-decoration: none;
+}
+.intro a:hover {
+    color: lightcoral;
+    text-decoration: underline;
+} 
+
+/*Artikel galleri*/
+
+.white img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    /*Jeg har sat W og H, da de ikke 100% er lige store*/
+}
+
+h2 {
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+}
+
+.item {
+    text-align: center;
+}
+
+.item p {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.white {
+    color: white;
+    background-color: darkseagreen;
+    margin-bottom: 20px;
+}
+
+#container a:hover {
+    filter: grayscale(100%);
+}
+
+/* Artikler - STYLES 
+--------------------------------------------------------------------*/
+
+.artikel1{
+    text-align: justify;
+}
+
+.artikel1 p {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.artikel1 h3 {
+    text-align: center;
+}
+
+.artikel1 > div {
+    background-color: darkseagreen;
+    padding: 20px;
+}
+
+.billig {
+    text-align: center;
+}
+
+div > ul {
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.artikel1 img {
+    width: 100%;
+}
+
+.artikel1 a {
+    text-decoration: none;
+    color: black;
+}
+
+.artikel1 a:hover{
+    color: lightcoral;
+    text-decoration: underline;
+}
+
+.butik {
+    text-align: center;
+}
+
+/* FOOTER STYLES 
+--------------------------------------------------------------------*/
+footer {
+    background-color: dimgrey;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.os {
+    font-size: 24px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+}
+
+/*Style til Ikonerne*/
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+ul.social {
+    display: block;
+    list-style-type: none;
+    margin-left: 0%;
+    align-items: baseline;
+    
+}
+
+ul.social li {
+    font-size: 1em;
+    display: inline;
+    padding: 0 2%;
+}
+
+ul.social li a {
+    color: black;
+}
+
+ul.social li.pin a:hover {
+    color: rgba(225, 19, 29, 0.71);
+}
+ul.social li.insta a:hover {
+    color: rgba(228, 57, 120, 0.67);
+}
+
+ul.social li.face a:hover {
+    color: rgba(22, 140, 237, 0.76);
+}
+
+ul.social li.twit a:hover {
+    color: rgba(83, 232, 225, 0.72);
+}
+
+ul.social li.snap a:hover {
+    color: rgba(237, 234, 42, 0.72);
+}
+
+
+/*Kontakt info*/
+#kontakt {
+    font-family: 'Harmattan', sans-serif;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.adresse {
+    margin: 3px;
+}
+
+.adresse1 {
+    margin-top: 3px;
+    margin-bottom: 0;
+}
+
+footer a {
+    color: black;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: palevioletred;
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center; 
+    margin: 0;
+    color: gray;
+    font-size: 13px;
+}
+
+
+/* IPAD STYLES
+-------------------------------------------------------------------*/
+
+@media all and (min-width: 680px) {
+    .menu-toggle,
+    .main-menu .menu-close {
+        display: none;
+    }
+
+    /*gør de ikke længere har den position i burgermenuen*/
+    .main-menu {
+        position: relative;
+        left: auto;
+        top: auto;
+        height: auto;
+    }
+
+    .main-menu ul {
+        display: flex;
+        /*Gør de ikke længere har den stil de har i burgermenuen*/
+        padding: 0;
+        box-shadow: none;
+        height: auto;
+        width: auto;
+        background: none;
+    }
+
+    .main-menu a {
+        color: black;
+        border: 0 !important;
+        /*fjerner border - Styling */
+    }
+
+    .main-menu a:hover,
+    .main-menu a:focus {
+        background: none;
+        color: #c00;
+        /*fjerner farven*/
+    }
+     .mainpic {
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 680px;
+    }
+    
+/*Header style*/
+
+    .navi {
+        font-size: 20px;
+    }
+    .navi a:hover {
+        color: lightcoral; 
+        text-decoration: none;
+    }
+    .navi a:active {
+        color: lavender;
+    }
+    .icons {
+        padding-right: 40px;
+    }
+    
+    /*Footer*/
+ .ryk {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    ul.social {
+        margin-bottom: 10px;
+    }
+    ul.social li {
+        margin: 10px;
+    }
+}
+
+/*artikler style*/
+.artikel1 img {
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+/* DESKTOP STYLES
+-----------------------------------------------------------------*/
+
+@media screen and (min-width: 1000px) {
+    .menu-toggle,
+    .main-menu .menu-close {
+        display: none;
+    }
+
+    /*gør de ikke længere har den position i burgermenuen*/
+    .main-menu {
+        position: relative;
+        left: auto;
+        top: auto;
+        height: auto;
+    }
+
+    .main-menu ul {
+        display: flex;
+        /*Gør de ikke længere har den stil de har i burgermenuen*/
+        padding: 0;
+        box-shadow: none;
+        height: auto;
+        width: auto;
+        background: none;
+    }
+
+    .main-menu a {
+        color: black;
+        border: 0 !important;
+        /*fjerner border - Styling */
+    }
+
+    .main-menu a:hover,
+    .main-menu a:focus {
+        background: none;
+        color: lightcoral;
+        /*fjerner farven*/
+    }
+    .item {
+        margin-right: 30px;
+    }
+     .mainpic {
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    }
+    
+.icons {
+    color: lightcoral; 
+    font-size: 2.3em;
+    order: 1; 
+}
+    /*artikler style*/
+.artikel1 img {
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+    
+    .artikel1 p {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+        width: 50%;
+    }
+    
+
+    
+}
